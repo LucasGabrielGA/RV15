@@ -1,0 +1,140 @@
+{% load static %}
+{% load colaborador_tags %}
+
+<!doctype html>
+<html lang="es-ar">
+<head>
+        <title>{% block title %}RV15.0{% endblock title %}</title>
+
+        <!-- Meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Blog de RV15.0">
+        <meta name="author" content="RV15.0">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet">
+
+        <!-- Bootstrap CSS -->
+        <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+        
+        <!-- Additional CSS Files -->
+        <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/templatemo-stand-blog.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/owl.css' %}">
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div><div></div><div></div>
+        </div>
+    </div>
+    <!-- Header -->
+    {% with namespace=request.resolver_match.namespace url_name=request.resolver_match.url_name %}
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'index' %}">
+                    <h2>RV15.0 Blogs<em>...</em></h2>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item {% if url_name == 'index' %} active {% endif %}">
+                            <a class="nav-link" href="{% url 'index' %}">Inicio</a>
+                        </li>
+                        <li class="nav-item {% if url_name == x %} active {% endif %}">
+                            <a class="nav-link" href="#">Acerca De</a>
+                        </li>
+                        <li class="nav-item {% if url_name == 'posts' %} active {% endif %}">
+                            <a class="nav-link" href="{% url 'apps.posts:posts' %}">Posts</a>
+                        </li>
+                        <li class="nav-item {% if url_name == 'contacto' %} active {% endif %}">
+                            <a class="nav-link" href="{% url 'apps.contacto:contacto' %}">Contáctanos</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ user.username }}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                                {% if user.is_superuser or request.user|has_group:"Colaborador" %}
+                                    <li><a class="dropdown-item" href="{% url 'apps.usuario:usuario_list' %}">Lista de usuarios</a></li>
+                                {% endif %}
+                                <li><a class="dropdown-item" href="{% url 'apps.posts:categoria_list' %}">Lista de categorías</a></li>
+                                <li><a class="dropdown-item" href="{% url 'apps.posts:posts' %}">Lista de posts</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <form method="POST" action="{% url 'apps.usuario:logout' %}">
+                                        {% csrf_token %}
+                                        <input type="submit" class="dropdown-item" value="Cerrar sesión">
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                        {% else %}
+                        <li class="nav-item {% if url_name == 'login' %} active {% endif %}">
+                            <a class="nav-link" href="{% url 'apps.usuario:login' %}">Iniciar sesión</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    {% endwith %}
+
+    <!-- Main Content -->
+     
+    {% block contenido %}
+
+    {% endblock %}    
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="social-icons">
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter (X)</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-12">
+                    <div class="copyright-text">
+                        <p>&copy; 2024 RV15.0 Co. | Diseño: <a href="https://campus-informatorio.chaco.gob.ar/login/index.php" target="_blank" rel="noopener noreferrer">Blog</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <!-- Static JS -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+    <script src="{% static 'assets/js/owl.js' %}"></script>
+    <script src="{% static 'assets/js/slick.js' %}"></script>
+    <script src="{% static 'assets/js/isotope.js' %}"></script>
+    <script src="{% static 'assets/js/accordions.js' %}"></script>
+    <!-- Inline JavaScript -->
+    <script>
+        const cleared = [0, 0, 0];
+        function clearField(t) {
+            if (!cleared[t.id]) {
+                cleared[t.id] = 1;
+                t.value = '';
+                t.style.color = '#fff';
+            }
+        }
+    </script>
+</body>
+</html>
