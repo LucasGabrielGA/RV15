@@ -425,9 +425,9 @@ header .navbar {
 
 .blog-posts .down-content {
 	padding: 40px;
-	border-right: 1px solid #eee;
-	border-left: 1px solid #eee;
-	border-bottom: 1px solid #eee;
+	border-right: 1px solid #559cc2;
+	border-left: 1px solid #559cc2;
+	border-bottom: 1px solid #559cc2;
 }
 
 .blog-posts .down-content span {
@@ -454,7 +454,7 @@ header .navbar {
 
 .blog-posts .down-content ul.post-info li:after {
 	content: '|';
-	color: #aaa;
+	color: #559cc2;
 	margin-left: 8px;
 }
 
@@ -477,7 +477,7 @@ header .navbar {
 
 .blog-posts .down-content ul.post-info li a {
 	font-size: 14px;
-	color: #aaa;
+	color: #559cc2;
 	font-weight: 400;
 	transition: all .3s;
 }
@@ -489,8 +489,8 @@ header .navbar {
 .blog-posts .down-content p {
 	padding: 25px 0px;
 	margin: 25px 0px;
-	border-top: 1px solid #eee;
-	border-bottom: 1px solid #eee;
+	border-top: 1px solid #559cc2;
+	border-bottom: 1px solid #559cc2;
 }
 
 .blog-posts .down-content ul.post-share {
