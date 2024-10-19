@@ -10,7 +10,7 @@
             <form method="POST">
                 {% csrf_token %}
                 <input type="submit" value="Sí, eliminar">
-                <a style="color: black;" href="{{ object.get.absolute_url }}">No, cancelar</a>
+                <a style="color: black;" href="{{ object.get_absolute_url }}">No, cancelar</a>
             </form>
         </div>
     {% else %}

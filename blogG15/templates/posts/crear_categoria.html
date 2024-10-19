@@ -2,23 +2,31 @@
 {% load colaborador_tags %}
 
 {% block contenido %}
-<center>
+<div class="container mt-5">
     {% if user.is_superuser or request.user|has_group:"Colaborador" %}
-        <div class="container-fluid">
-            <h1>Agregar nueva categoría</h1>
-            <form method="post">
-                {% csrf_token %}
+        <!-- Título del formulario -->
+        <h1 class="display-5 text-center mb-4">Agregar nueva categoría</h1>
+        
+        <!-- Formulario para agregar categoría -->
+        <form method="post" class="border p-4 rounded shadow-sm bg-light">
+            {% csrf_token %}
+            <div class="mb-3" style="margin-left: 35%; padding: 10px;">
                 {{ form.as_p }}
-                <input type="submit" value="Agregar">
-            </form>
-            <div class="container-fluid" style="margin-top: 300px;">
-                <a id="boton_post" href="{% url 'apps.posts:categoria_list' %}">Listar todas las categorías</a>
             </div>
+            <!-- Botón de agregar categoría -->
+            <button type="submit" class="btn btn-primary btn-lg w-100">Agregar</button>
+        </form>
+        
+        <!-- Botón para listar todas las categorías -->
+        <div class="text-center mt-4">
+            <a href="{% url 'apps.posts:categoria_list' %}" class="btn btn-outline-secondary">Listar todas las categorías</a>
         </div>
+
     {% else %}
-        <div class="container-fluid" style="margin: 300px;">
-            <h1>¡No tienes permiso para entrar a esta página!</h1>
+        <!-- Mensaje de acceso denegado si el usuario no tiene permisos -->
+        <div class="alert alert-danger mt-5 text-center">
+            <h2>¡No tienes permiso para entrar a esta página!</h2>
         </div>
     {% endif %}
-</center>
+</div>
 {% endblock %}

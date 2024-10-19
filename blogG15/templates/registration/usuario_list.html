@@ -1,19 +1,34 @@
 {% extends 'base.html' %}
 
 {% block contenido %}
-<center>
-    <div class="container-fluid"">
-        <h1>Lista de Usuarios</h1>
-        <br>
-        <ul>
-            {% for usuario in usuarios %}
-                <li>{{ usuario.username }}(
-                    <a style="color: black;" href="{% url 'apps.usuario:usuario_delete' pk=usuario.pk %}">Eliminar</a>)
-                </li>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Lista de Usuarios</h1>
+    
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover text-center">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Nombre de Usuario</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuario in usuarios %}
+                    <tr>
+                        <td>{{ usuario.username }}</td>
+                        <td>
+                            <a href="{% url 'apps.usuario:usuario_delete' pk=usuario.pk %}" class="btn btn-danger btn-sm">
+                                Eliminar
+                            </a>
+                        </td>
+                    </tr>
                 {% empty %}
-                <li>No hay usuarios</li>
-            {% endfor %}
-        </ul>
+                    <tr>
+                        <td colspan="2">No hay usuarios disponibles</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
-</center>
+</div>
 {% endblock %}

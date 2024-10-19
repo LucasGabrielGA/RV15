@@ -47,8 +47,8 @@
                         <li class="nav-item {% if url_name == 'index' %} active {% endif %}">
                             <a class="nav-link" href="{% url 'index' %}">Inicio</a>
                         </li>
-                        <li class="nav-item {% if url_name == x %} active {% endif %}">
-                            <a class="nav-link" href="#">Acerca De</a>
+                        <li class="nav-item {% if url_name == 'about' %} active {% endif %}">
+                            <a class="nav-link" href="{% url 'about' %}">Acerca De</a>
                         </li>
                         <li class="nav-item {% if url_name == 'posts' %} active {% endif %}">
                             <a class="nav-link" href="{% url 'apps.posts:posts' %}">Posts</a>
@@ -89,10 +89,11 @@
     {% endwith %}
 
     <!-- Main Content -->
-     
-    {% block contenido %}
+    <section style="padding-top: 80px">
+        {% block contenido %}
 
-    {% endblock %}    
+        {% endblock %} 
+    </section>    
 
     <!-- Footer -->
     <footer>

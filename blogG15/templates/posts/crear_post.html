@@ -2,24 +2,30 @@
 {% load colaborador_tags %}
 
 {% block contenido %}
-<center>
+<div class="container mt-5">
     {% if user.is_superuser or request.user|has_group:"Colaborador" %}
-        <div class="container-fluid"">
-            <div class="container-fluid" style="margin-top: 300px;">
-                <a id="boton_post" href="{% url 'apps.posts:crear_categoria' %}">Crear nueva categoría</a>
-            </div>
 
-            <h1>Crear Post</h1>
-            <form method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit" value="Guardar">
-            </form>
+        <!-- Título del formulario -->
+        <div class="text-center mb-5">
+            <h1 class="display-4 text-primary">Crear Post</h1>
+            <p class="lead">Completa el siguiente formulario para publicar un nuevo post.</p>
+            <hr class="my-4">
         </div>
+
+        <!-- Formulario para crear el post -->
+        <form method="POST" enctype="multipart/form-data" class="bg-light p-5 rounded shadow-sm">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="d-flex justify-content">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </form>
     {% else %}
-        <div class="container-fluid" style="margin: 100px;">
-            <h1>¡No tienes permiso para acceder a esta página!</h1>
+        <!-- Mensaje de acceso denegado -->
+        <div class="container text-center" style="margin: 100px;">
+            <h1 class="display-4 text-danger">Acceso Denegado</h1>
+            <p class="lead">¡No tienes permiso para acceder a esta página!</p>
         </div>
     {% endif %}
-</center>
+</div>
 {% endblock %}

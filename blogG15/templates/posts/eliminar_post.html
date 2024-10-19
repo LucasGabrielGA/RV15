@@ -2,21 +2,29 @@
 {% load colaborador_tags %}
 
 {% block contenido %}
-<center>
+<div class="container mt-5">
+    <!-- Verificación de permisos -->
     {% if user.is_superuser or request.user|has_group:"Colaborador" %}
-        <div class="container-fluid">
-            <h1>Eliminar post</h1>
-            <p>¿Estás seguro que quieres eliminar el post "{{ object.titulo }}"?</p>
-            <form method="post">
-                {% csrf_token %}
-                <input type="submit" value="Sí, eliminar">
-                <a style="color: black;" href="{% url 'apps.posts:posts' %}">No, cancelar</a>
-            </form>
+        <!-- Contenido principal -->
+        <div class="card shadow-sm">
+            <div class="card-body text-center">
+                <h1 class="display-6 text-danger mb-4">Eliminar post</h1>
+                <p class="fs-5">¿Estás seguro que quieres eliminar el post <strong>"{{ object.titulo }}"</strong>?</p>
+                <!-- Formulario para confirmar la eliminación -->
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="d-grid gap-2 d-md-block mt-4">
+                        <button type="submit" class="btn btn-danger btn-lg">Sí, eliminar</button>
+                        <a href="{% url 'apps.posts:posts' %}" class="btn btn-secondary btn-lg">No, cancelar</a>
+                    </div>
+                </form>
+            </div>
         </div>
     {% else %}
-        <div class="container-fluid" style="margin: 300px;">
-            <h1>¡No tienes permiso para entrar a esta página!</h1>
+        <!-- Mensaje de error si no tiene permisos -->
+        <div class="alert alert-danger text-center mt-5" role="alert">
+            <h1 class="display-6">¡No tienes permiso para entrar a esta página!</h1>
         </div>
     {% endif %}
-</center>
+</div>
 {% endblock %}
