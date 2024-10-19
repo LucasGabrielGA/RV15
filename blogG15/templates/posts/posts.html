@@ -22,52 +22,52 @@
                     <a href="{% url 'apps.posts:posts' %}?orden=antiguo">Más antiguo</a>  
                                  
                     <a href="{% url 'apps.posts:posts' %}?orden=alfabetico">Orden alfabético</a>                
-                </div>
+                </div>             
               </ul>
-            </div>
+            </div>                 
           </div>
-        </div>
+        </div>      
       </div>
     </section>
 </div>
+<br>
+<div>
+  {% if user.is_superuser or request.user|has_group:"Colaborador" %}
+    <div class="container-fluid">
+      <div class="main-button">
+        <a href="{% url 'apps.posts:crear_post' %}">Crear nuevo post</a>  
+      </div>                          
+    </div>
 
+  {% endif %}  
+</div>
 <section class="blog-posts grid-system">
     <div class="container">
       <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-8">          
           <div class="all-blog-posts">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="container-fluid">
-                        {% if user.is_superuser or request.user|has_group:"Colaborador" %}
-                            <div class="container-fluid">
-                            <a id="boton_post" href="{% url 'apps.posts:crear_post' %}">Crear nuevo post</a>
-                            </div>
-                        {% endif %}
-                                            
-                        {% for i in posts %}
-                            <br>
-                            <a id="boton_post" href="{% url 'apps.posts:post_individual' i.id %}"><h1>{{ i.titulo }}</h1></a>
-                            {% if posts.subtitulo != None %}
-                                <h2>{{ posts.subtitulo }}</h2>
-                            {% endif %}
-                            <h3>{{ i.categoria }}</h3>
-                            <br>
-                            {% empty %}
-                            <h1>No hay posts para mostrar</h1>
-                        {% endfor %}
-                    </div>    
+            <div class="blog-post">
+
+              {% for i in posts %}
+                <div class="blog-thumb">
+                  <img src="{{ posts.imagen.url }}" alt="">
                 </div>
-                <!-- <div class="col-lg-12">
-                  <ul class="page-numbers">
-                    <li><a href="#">1</a></li>
-                    <li class="active"><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+                <div class="down-content">
+                  <span>{{ i.categoria }}</span>
+                  <a href="{% url 'apps.posts:post_individual' i.id %}"><h4>{{ i.titulo }}</h4></a>
+                  <ul class="post-info">
+                    <li><a href="#">{{ posts.autor }}</a></li>
+                    <li><a href="#">{{ posts.publicado }}</a></li>
+                    <li><a href="#">12 Comments</a></li>
                   </ul>
-                </div> -->
-              </div>
-            </div>
+                  <p>{{ posts.texto }}</p>                    
+                </div>
+                {%empty%}
+                  <h1>No hay posts para mostrar</h1>
+              {% endfor %}
+              
+            </div>                              
+          </div>
         </div>        
         <div class="col-lg-4">
             <div class="sidebar">

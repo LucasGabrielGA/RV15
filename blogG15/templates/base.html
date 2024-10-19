@@ -4,24 +4,21 @@
 <!doctype html>
 <html lang="es-ar">
 <head>
-        <title>{% block title %}RV15.0{% endblock title %}</title>
-
-        <!-- Meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="Blog de RV15.0">
-        <meta name="author" content="RV15.0">
-
-        <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet">
-
-        <!-- Bootstrap CSS -->
-        <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-        
-        <!-- Additional CSS Files -->
-        <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
-        <link rel="stylesheet" href="{% static 'assets/css/templatemo-stand-blog.css' %}">
-        <link rel="stylesheet" href="{% static 'assets/css/owl.css' %}">
+    <title>{% block title %}RV15.0{% endblock title %}</title>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Blog de RV15.0">
+    <meta name="author" content="RV15.0">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/templatemo-stand-blog.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.css' %}">
 </head>
 
 <body>
@@ -31,7 +28,9 @@
             <div></div><div></div><div></div>
         </div>
     </div>
+
     <!-- Header -->
+
     {% with namespace=request.resolver_match.namespace url_name=request.resolver_match.url_name %}
     <header>
         <nav class="navbar navbar-expand-lg">
@@ -47,8 +46,8 @@
                         <li class="nav-item {% if url_name == 'index' %} active {% endif %}">
                             <a class="nav-link" href="{% url 'index' %}">Inicio</a>
                         </li>
-                        <li class="nav-item {% if url_name == x %} active {% endif %}">
-                            <a class="nav-link" href="#">Acerca De</a>
+                        <li class="nav-item {% if url_name == 'about' %} active {% endif %}">
+                            <a class="nav-link" href="{% url 'about' %}">Acerca De</a>
                         </li>
                         <li class="nav-item {% if url_name == 'posts' %} active {% endif %}">
                             <a class="nav-link" href="{% url 'apps.posts:posts' %}">Posts</a>
@@ -89,10 +88,13 @@
     {% endwith %}
 
     <!-- Main Content -->
-     
+    
+               
     {% block contenido %}
 
+
     {% endblock %}    
+    
 
     <!-- Footer -->
     <footer>
