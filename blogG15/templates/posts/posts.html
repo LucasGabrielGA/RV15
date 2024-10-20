@@ -48,47 +48,24 @@
           <div class="all-blog-posts">
             <div class="blog-post">
               {% for i in posts %}
-<<<<<<< HEAD
-                <div class="blog-thumb">
-                  <img src="{{ posts.imagen.url }}" alt="">
-                </div>
                 <div class="down-content">
                   <span>{{ i.categoria }}</span>
                   <a href="{% url 'apps.posts:post_individual' i.id %}"><h4>{{ i.titulo }}</h4></a>
                   <ul class="post-info">
-                    <li><a href="#">{{ i.autor }}</a></li>
-                    <li><a href="#">{{ i.publicado }}</a></li>
-                    <li><a href="#">12 Comments</a></li>
+                    <li><a>{{ i.autor }}</a></li>
+                    <li><a>{{ i.publicado }}</a></li>
                   </ul>
+                  <div class="blog-thumb">
+                    <a href="{% url 'apps.posts:post_individual' i.id %}">
+                      <img src="{{ i.imagen.url }}" alt="" height="300px;"">
+                    </a>
+                  </div>
                   <p>{{ i.texto }}</p>                    
                 </div>
                 {%empty%}
                   <h1>No hay posts para mostrar</h1>
               {% endfor %}
               
-=======
-                    <div class="down-content">
-                      <span>{{ i.categoria }}</span>
-                      <a href="{% url 'apps.posts:post_individual' i.id %}"><h4>{{ i.titulo }}</h4></a>
-                      {% if i.subtitulo %}
-                        <a href="{% url 'apps.posts:post_individual' i.id %}"><h5>{{ i.subtitulo }}</h5></a>
-                      {% endif %}
-                      <ul class="post-info" style="margin-top: 5px;">
-                        <li><a>Publicado por {{ i.autor }}</a></li>
-                      </ul>
-                      <div class="blog-thumb">
-                        <a href="{% url 'apps.posts:post_individual' i.id %}">
-                          <img src="{{ i.imagen.url }}" alt="">
-                        </a>
-                        <p>{{ i.texto }}</p>
-                      </div>                   
-                    </div>
-                    {% empty %}                  
-                    <div class="blog-empty">
-                      <h2>No hay posts para mostrar </h2>
-                    </div>
-                  {% endfor %} 
->>>>>>> fbdef4b70dbfab9040ee8fb557e57ba7f213b242
             </div>                              
           </div>
         </div>        
