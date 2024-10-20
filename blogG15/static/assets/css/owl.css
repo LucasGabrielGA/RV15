@@ -9,7 +9,7 @@
 
  /* styles.css */
 .fondo {
-  background-image: url("static/assets/images/fonnndo.jpg");
+  background-image: url("/images/fonnndo.jpg");
   
   
   background-size: cover;

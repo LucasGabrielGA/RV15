@@ -4,8 +4,7 @@
 
 {% load colaborador_tags %}
 
-{% block title %} Inicio {%endblock title%} 
-<var>contador = 0</var>
+{% block title %} Inicio {%endblock title%}
 
 {% block contenido %}
         <!-- Page Content -->
@@ -14,7 +13,7 @@
   <div class="container-fluid">
       <div class="owl-banner owl-carousel">
 
-        {% for i in posts %}
+        {% for i in posts|slice:":6" %}
           <div class="item">
             <a href="{% url 'apps.posts:post_individual' i.id %}">
               <img src="{{i.imagen.url}}" alt="" height="300px;">
@@ -23,11 +22,11 @@
               <div class="main-content">
                 <div class="meta-category">
                   <!---ACÁ ESTÁ LO QUE SERÍA DEL INICIO LAS NOTICIAS DEL CARRUSEL-->
-                  <span>{{ i.categoria }}</span>
+                  <span style="color: darkorange">{{ i.categoria }}</span>
                   <a href="<img src="{{i.imagen.url}}" alt="" height="300px;">
-                    <h4>{{ i.titulo }}</h4>
+                    <h4 style="color: black">{{ i.titulo }}</h4>
                   </a>
-                  <a>{{ i.publicado }}</a>          
+                  <a style="color: orange;">{{ i.publicado }}</a>          
                 </div>
               </div>
             </div>
@@ -123,7 +122,7 @@
                         <li>
                           <a href="{% url 'apps.posts:post_individual' i.id %}"><h5>{{ i.titulo }}</h5></a>
                           <ul class="post-info">
-                            <li><a>{{ i.publicado }}</a></li>
+                            <li><a style="color: darkcyan;">{{ i.publicado }}</a></li>
                           </ul>
                         </li>
                         
