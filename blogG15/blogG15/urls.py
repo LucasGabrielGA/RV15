@@ -28,11 +28,15 @@ handler404 = pagina_404
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
+<<<<<<< HEAD
+    path('about/', about, name='about'),
+=======
     path('about', about, name='about'),
+>>>>>>> fbdef4b70dbfab9040ee8fb557e57ba7f213b242
     path('', include('apps.posts.urls')),
     path('', include('apps.contacto.urls')),
     path('', include('apps.usuario.urls')),
-    path('', include('django.contrib.auth.urls'))
+    path('', include('django.contrib.auth.urls')),
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
