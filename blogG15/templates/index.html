@@ -15,20 +15,19 @@
       <div class="owl-banner owl-carousel">
 
         {% for i in posts %}
-          <div class="item">          
-            <img src="{{posts.imagen.url}}" alt="">
+          <div class="item">
+            <a href="{% url 'apps.posts:post_individual' i.id %}">
+              <img src="{{i.imagen.url}}" alt="" height="300px;">
+            </a>
             <div class="item-content">
               <div class="main-content">
                 <div class="meta-category">
-                  <!---ACÁ ESTÁ LO QUE SERÍA DEL INICIO LAS NOTICIAS DEL CARRUSEL-->                
-                  <ul class="post-info"></ul>
-                    <li><span>{{ i.categoria }}</span></li>                    
-                    <li><a href="{% url 'apps.posts:post_individual' i.id %}"></li>
-                    <li><h4>{{ i.titulo }}</h4></a></li>
-                      <li><a href="#">{{ posts.autor }}</a></li>
-                      <li><a href="#">{{ posts.publicado }}</a></li>
-                      <!-- <li><a href="#">90 Comentarios</a></li> -->                
-                  </ul>                
+                  <!---ACÁ ESTÁ LO QUE SERÍA DEL INICIO LAS NOTICIAS DEL CARRUSEL-->
+                  <span>{{ i.categoria }}</span>
+                  <a href="<img src="{{i.imagen.url}}" alt="" height="300px;">
+                    <h4>{{ i.titulo }}</h4>
+                  </a>
+                  <a>{{ i.publicado }}</a>          
                 </div>
               </div>
             </div>
