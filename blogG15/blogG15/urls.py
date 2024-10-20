@@ -16,11 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-<<<<<<< HEAD
 from .views import index, about, pagina_404 #Importamos desde views la función index
-=======
-from .views import index, about, pagina_404 #Importamos desde views
->>>>>>> linea2
 
 #-> librerías para mostrar las imágenes de los posts (indica la ruta de la carpeta "media")
 from django.conf.urls.static import static
@@ -32,11 +28,7 @@ handler404 = pagina_404
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
-<<<<<<< HEAD
-    path('about', about, name='about'),
-=======
     path('about/', about, name='about'),
->>>>>>> linea2
     path('', include('apps.posts.urls')),
     path('', include('apps.contacto.urls')),
     path('', include('apps.usuario.urls')),

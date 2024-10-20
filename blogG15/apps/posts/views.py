@@ -16,7 +16,7 @@ def posts(request):
 #-> Vista basada en clases
 class PostListView(ListView):
     model = Post
-    template_name = 'posts/posts.html'
+    template_name = "posts/posts.html"
     context_object_name = "posts"
 
     def get_queryset(self):
@@ -39,7 +39,7 @@ class PostDetailView(DetailView):
     model = Post
     template_name = 'posts/post_individual.html'
     context_object_name = "posts"
-    pk_url_kwarg = 'id'
+    pk_url_kwarg = "id"
     queryset = Post.objects.all()
 
     def get_context_data(self, **kwargs):
