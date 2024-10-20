@@ -7,36 +7,33 @@
 {% block title %} Inicio {%endblock title%} 
 
 {% block contenido %}
-        <!-- Page Content -->
-<!-- Banner Starts Here -->
-<div class="main-banner header-text"></div>
-  <div class="container-fluid">
-      <div class="owl-banner owl-carousel">
-
-        {% for i in posts %}
-          <div class="item">          
-            <img src="{{posts.imagen.url}}" alt="">
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="main-banner header-text">
+      <div class="container-fluid">
+        <div class="owl-banner owl-carousel">
+          {% for i in posts %}
+          <div class="item">            
+            <img src="{{ i.imagen.url }}" alt="">
             <div class="item-content">
               <div class="main-content">
                 <div class="meta-category">
-                  <!---ACÁ ESTÁ LO QUE SERÍA DEL INICIO LAS NOTICIAS DEL CARRUSEL-->                
-                  <ul class="post-info"></ul>
-                    <li><span>{{ i.categoria }}</span></li>                    
-                    <li><a href="{% url 'apps.posts:post_individual' i.id %}"></li>
-                    <li><h4>{{ i.titulo }}</h4></a></li>
-                      <li><a href="#">{{ posts.autor }}</a></li>
-                      <li><a href="#">{{ posts.publicado }}</a></li>
-                      <!-- <li><a href="#">90 Comentarios</a></li> -->                
-                  </ul>                
+                  <span>{{ i.categoria }}</span>
                 </div>
+                <a href="{% url 'apps.posts:post_individual' i.id %}"><h4>{{ i.titulo }}</h4></a>
+                <ul class="post-info">
+                  <li><a href="#">{{ i.autor }}</a></li>
+                  <li><a href="#">{{ i.publicado }}</a></li>
+                  <li><a href="#">12 Comments</a></li>
+                </ul>
               </div>
             </div>
           </div>
-        {% endfor %}
+          {% endfor %}
+        </div>
       </div>
-  </div>
-</div>
-<!-- Banner Ends Here -->
+    </div>
+    <!-- Banner Ends Here -->
 
 <div>
     <section class="call-to-action">
@@ -75,17 +72,17 @@
 
                   {% for i in posts %}
                     <div class="blog-thumb">
-                      <img src="{{ posts.imagen.url }}" alt="">
+                      <img src="{{ i.imagen.url }}" alt="">
                     </div>
                     <div class="down-content">
                       <span>{{ i.categoria }}</span>
                       <a href="{% url 'apps.posts:post_individual' i.id %}"><h4>{{ i.titulo }}</h4></a>
                       <ul class="post-info">
-                        <li>{{ posts.autor }}</li>
-                        <li><a href="#">{{ posts.publicado }}</li>
+                        <li>{{ i.autor }}</li>
+                        <li><a href="#">{{ i.publicado }}</li>
                         <li><a href="#">12 Comentarios</a></li>
                       </ul>
-                      <p>{{ posts.texto }}</p>                    
+                      <p>{{ i.texto }}</p>                    
                     </div>
                     {% empty %}                  
                     <div class="blog-empty">
