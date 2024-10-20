@@ -38,7 +38,7 @@ h1,h2,h3,h4,h5,h6 {
 
 .main-button a {
 	display: inline-block;
-	background-color: #fb9857;
+	background-color: #57b1fb;
 	color: #fff;
 	font-size: 13px;
 	font-weight: 500;
@@ -85,7 +85,7 @@ h1,h2,h3,h4,h5,h6 {
 
 #preloader {
   overflow: hidden;
-  background: #f48840;
+  background: #79ffc7;
   left: 0;
   right: 0;
   top: 0;
@@ -288,7 +288,7 @@ header .navbar {
 }
 
 .owl-banner .item .item-content .meta-category span {
-	color: #f48840;
+	color: #c5fffc;
 	font-size: 18px;
 	text-transform: uppercase;
 	font-weight: 900;
@@ -425,9 +425,9 @@ header .navbar {
 
 .blog-posts .down-content {
 	padding: 40px;
-	border-right: 1px solid #559cc2;
-	border-left: 1px solid #559cc2;
-	border-bottom: 1px solid #559cc2;
+	border-right: 1px solid #eee;
+	border-left: 1px solid #eee;
+	border-bottom: 1px solid #eee;
 }
 
 .blog-posts .down-content span {
@@ -454,7 +454,7 @@ header .navbar {
 
 .blog-posts .down-content ul.post-info li:after {
 	content: '|';
-	color: #559cc2;
+	color: #aaa;
 	margin-left: 8px;
 }
 
@@ -477,7 +477,7 @@ header .navbar {
 
 .blog-posts .down-content ul.post-info li a {
 	font-size: 14px;
-	color: #559cc2;
+	color: #aaa;
 	font-weight: 400;
 	transition: all .3s;
 }
@@ -489,8 +489,8 @@ header .navbar {
 .blog-posts .down-content p {
 	padding: 25px 0px;
 	margin: 25px 0px;
-	border-top: 1px solid #559cc2;
-	border-bottom: 1px solid #559cc2;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
 }
 
 .blog-posts .down-content ul.post-share {

@@ -5,8 +5,10 @@
 {% load colaborador_tags %}
 
 {% block title %} Inicio {%endblock title%} 
+<var>contador = 0</var>
 
 {% block contenido %}
+<<<<<<< HEAD
     <!-- Page Content -->
     <!-- Banner Starts Here -->
     <div class="main-banner header-text">
@@ -19,6 +21,28 @@
               <div class="main-content">
                 <div class="meta-category">
                   <span>{{ i.categoria }}</span>
+=======
+        <!-- Page Content -->
+<!-- Banner Starts Here -->
+<div class="main-banner header-text"></div>
+  <div class="container-fluid">
+      <div class="owl-banner owl-carousel">
+
+        {% for i in posts %}
+          <div class="item">
+            <a href="{% url 'apps.posts:post_individual' i.id %}">
+              <img src="{{i.imagen.url}}" alt="" height="300px;">
+            </a>
+            <div class="item-content">
+              <div class="main-content">
+                <div class="meta-category">
+                  <!---ACÁ ESTÁ LO QUE SERÍA DEL INICIO LAS NOTICIAS DEL CARRUSEL-->
+                  <span>{{ i.categoria }}</span>
+                  <a href="<img src="{{i.imagen.url}}" alt="" height="300px;">
+                    <h4>{{ i.titulo }}</h4>
+                  </a>
+                  <a>{{ i.publicado }}</a>          
+>>>>>>> fbdef4b70dbfab9040ee8fb557e57ba7f213b242
                 </div>
                 <a href="{% url 'apps.posts:post_individual' i.id %}"><h4>{{ i.titulo }}</h4></a>
                 <ul class="post-info">
@@ -70,19 +94,33 @@
               <div class="col-lg-12">                
                 <div class="blog-post">
 
+<<<<<<< HEAD
                   {% for i in posts %}
                     <div class="blog-thumb">
                       <img src="{{ i.imagen.url }}" alt="">
                     </div>
+=======
+                  {% for i in posts|slice:":3" %}
+>>>>>>> fbdef4b70dbfab9040ee8fb557e57ba7f213b242
                     <div class="down-content">
                       <span>{{ i.categoria }}</span>
                       <a href="{% url 'apps.posts:post_individual' i.id %}"><h4>{{ i.titulo }}</h4></a>
                       <ul class="post-info">
+<<<<<<< HEAD
                         <li>{{ i.autor }}</li>
                         <li><a href="#">{{ i.publicado }}</li>
                         <li><a href="#">12 Comentarios</a></li>
                       </ul>
                       <p>{{ i.texto }}</p>                    
+=======
+                        <li><a>Publicado por {{ i.autor }}</a></li>
+                      </ul>
+                      <div class="blog-thumb">
+                        <a href="{% url 'apps.posts:post_individual' i.id %}">
+                          <img src="{{ i.imagen.url }}" alt="" height="350px;">
+                        </a>
+                      </div>           
+>>>>>>> fbdef4b70dbfab9040ee8fb557e57ba7f213b242
                     </div>
                     {% empty %}                  
                     <div class="blog-empty">
@@ -117,17 +155,19 @@
                   </div>
                   <div class="content">
                     <ul>
-                      
                       {% for i in posts %}
-                        <li><a href="{% url 'apps.posts:post_individual' i.id %}"></a></li>
-                        <h5>{{ i.titulo }}</h5>
-                        <span>MES - DIA - AÑO</span>
+                        <li>
+                          <a href="{% url 'apps.posts:post_individual' i.id %}"><h5>{{ i.titulo }}</h5></a>
+                          <ul class="post-info">
+                            <li><a>{{ i.publicado }}</a></li>
+                          </ul>
+                        </li>
+                        
                         {% empty %}
                         <div class="blog-empty">
                             <h2>No hay posts para mostrar </h2>
                         </div>                        
-                      {% endfor %}
-                                           
+                      {% endfor %}             
                     </ul>
                   </div>
                 </div>
@@ -140,7 +180,9 @@
                   <div class="content">
                     <ul>
                       {% for categoria in categorias %}
-                        <li><a href="{% url 'apps.posts:posts_por_categoria' pk=categoria.pk %}">{{ categoria.nombre }}</a>
+                        <li>
+                          <a href="{% url 'apps.posts:posts_por_categoria' pk=categoria.pk %}">{{ categoria.nombre }}</a>
+                        </li>
                         {% empty %}
                             <li>No hay categorías</li>
                       {% endfor %}

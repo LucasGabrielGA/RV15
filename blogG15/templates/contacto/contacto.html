@@ -23,9 +23,14 @@
                 {% endif %}
                 
                 <!-- Formulario de contacto -->
-                <form method="POST" class="needs-validation" novalidate>
+                <form method="POST" class="needs-validation form-group col-sm-10" novalidate>
                     {% csrf_token %}
-                    {{ form.as_p }}
+                    <div class="form-group">
+                        <input type="nombre_apellido" name="nombre_apellido" placeholder="Ingresa tu nombre completo" class="form-control" style="margin-bottom: 10px;" required>
+                        <input type="email" name="email" placeholder="Ingresa tu Correo Electrónico" class="form-control" style="margin-bottom: 10px;" required>
+                        <input type="asunto" name="asunto" placeholder="Ingresa un Asunto" class="form-control" style="margin-bottom: 10px;" required>
+                        <textarea name="mensaje" placeholder="Ingresa tu mensaje" class="form-control" style="margin-bottom: 10px;" required></textarea>
+                    </div>
                     
                     <!-- Botón de enviar -->
                     <div class="d-grid">

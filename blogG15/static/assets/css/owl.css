@@ -7,13 +7,25 @@
  *  Owl Carousel - Core
  */
 
+ /* styles.css */
+.fondo {
+  background-image: url("static/assets/images/fonnndo.jpg");
+  
+  
+  background-size: cover;
+}
+
+body, header {
+  margin: 0;
+  padding: 0;
+}
+ 
  header {
-	background-color: rgb(70, 160, 212);
+	background-color: rgb(135, 31, 233);
   }
 
-body{
-  background-color: rgb(205, 240, 245);
-}
+/*{% static 'assets/images/fondoweb.png' %}*/
+  /* cambiar FONDO IMAGEN PNG*/
 
  .owl-carousel {
   display: none;

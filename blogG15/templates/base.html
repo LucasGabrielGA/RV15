@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="{% static 'assets/css/owl.css' %}">
 </head>
 
-<body>
+<body class="fondo">
     <!-- Preloader -->
     <div id="preloader">
         <div class="jumper">
@@ -86,11 +86,21 @@
         </nav>
     </header>
     {% endwith %}
+<<<<<<< HEAD
    
     {% block contenido %}
 
 
     {% endblock %}    
+=======
+
+    <!-- Main Content -->
+    <section style="padding-top: 80px">
+        {% block contenido %}
+
+        {% endblock %} 
+    </section>    
+>>>>>>> fbdef4b70dbfab9040ee8fb557e57ba7f213b242
 
     <!-- Footer -->
     <footer>

@@ -15,12 +15,14 @@
             <tbody>
                 {% for usuario in usuarios %}
                     <tr>
-                        <td>{{ usuario.username }}</td>
-                        <td>
-                            <a href="{% url 'apps.usuario:usuario_delete' pk=usuario.pk %}" class="btn btn-danger btn-sm">
-                                Eliminar
-                            </a>
-                        </td>
+                        {% if usuario != user  %}
+                            <td>{{ usuario.username }}</td>
+                            <td>
+                                <a href="{% url 'apps.usuario:usuario_delete' pk=usuario.pk %}" class="btn btn-danger btn-sm">
+                                    Eliminar
+                                </a>
+                            </td>
+                        {% endif %}
                     </tr>
                 {% empty %}
                     <tr>
