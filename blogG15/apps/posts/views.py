@@ -11,7 +11,8 @@ from django.urls import reverse, reverse_lazy
 #-> Vista basada en funciones
 def posts(request):
     posts = Post.objects.all()
-    return render(request, 'posts.html', {'posts' : posts})
+    categorias = Categoria.objects.all()
+    return render(request, 'posts.html', {'posts' : posts, 'categorias':categorias})
 
 #-> Vista basada en clases
 class PostListView(ListView):

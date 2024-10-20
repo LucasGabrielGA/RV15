@@ -23,7 +23,7 @@
                 {% endif %}
                 
                 <!-- Formulario de contacto -->
-                <form method="POST" class="needs-validation" novalidate>
+                <form method="POST" class="needs-validation form-group col-sm-10" novalidate>
                     {% csrf_token %}
                     {{ form.as_p }}
                     

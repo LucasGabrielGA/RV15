@@ -34,7 +34,7 @@
 <div>
   {% if user.is_superuser or request.user|has_group:"Colaborador" %}
     <div class="container-fluid">
-      <div class="main-button">
+      <div class="main-button" style="margin: 15px;">
         <a href="{% url 'apps.posts:crear_post' %}">Crear nuevo post</a>  
       </div>                          
     </div>
@@ -47,25 +47,28 @@
         <div class="col-lg-8">          
           <div class="all-blog-posts">
             <div class="blog-post">
-
               {% for i in posts %}
-                <div class="blog-thumb">
-                  <img src="{{ posts.imagen.url }}" alt="">
-                </div>
-                <div class="down-content">
-                  <span>{{ i.categoria }}</span>
-                  <a href="{% url 'apps.posts:post_individual' i.id %}"><h4>{{ i.titulo }}</h4></a>
-                  <ul class="post-info">
-                    <li><a href="#">{{ posts.autor }}</a></li>
-                    <li><a href="#">{{ posts.publicado }}</a></li>
-                    <li><a href="#">12 Comments</a></li>
-                  </ul>
-                  <p>{{ posts.texto }}</p>                    
-                </div>
-                {%empty%}
-                  <h1>No hay posts para mostrar</h1>
-              {% endfor %}
-              
+                    <div class="down-content">
+                      <span>{{ i.categoria }}</span>
+                      <a href="{% url 'apps.posts:post_individual' i.id %}"><h4>{{ i.titulo }}</h4></a>
+                      {% if i.subtitulo %}
+                        <a href="{% url 'apps.posts:post_individual' i.id %}"><h5>{{ i.subtitulo }}</h5></a>
+                      {% endif %}
+                      <ul class="post-info" style="margin-top: 5px;">
+                        <li><a>Publicado por {{ i.autor }}</a></li>
+                      </ul>
+                      <div class="blog-thumb">
+                        <a href="{% url 'apps.posts:post_individual' i.id %}">
+                          <img src="{{ i.imagen.url }}" alt="">
+                        </a>
+                        <p>{{ i.texto }}</p>
+                      </div>                   
+                    </div>
+                    {% empty %}                  
+                    <div class="blog-empty">
+                      <h2>No hay posts para mostrar </h2>
+                    </div>
+                  {% endfor %} 
             </div>                              
           </div>
         </div>        
@@ -87,18 +90,18 @@
                     </div>
                     <div class="content">
                       <ul>
-                        <li><a href="https://tntsports.com.ar/ligaprofesional/en-vivo-river-vs-talleres-minuto-a-minuto-tnt-sports-20240929-0019.html">
-                          <h5>RIVER Vestibulum id turpis porttitor sapien facilisis scelerisque</h5>
-                          <span>19 de Septiembre, 2024</span>
-                        </a></li>
-                        <li><a href="https://www.infobae.com/peru/deportes/2024/09/28/donde-ver-boca-juniors-vs-belgrano-canal-tv-online-del-partido-por-la-liga-argentina-2024/">
-                          <h5>BOCA Suspendisse et metus nec libero ultrices varius eget in risus</h5>
-                          <span>28 de Septiembre, 2024</span>
-                        </a></li>
-                        <li><a href="https://www.racingdealma.com.ar/el-tremendo-problema-para-racing-con-platense/">
-                          <h5>RACING Swag hella echo park leggings, shaman cornhole ethical coloring</h5>
-                          <span>24 de Septiembre, 2024</span>
-                        </a></li>
+                        {% for i in posts %}
+                          <li>
+                            <a href="{% url 'apps.posts:post_individual' i.id %}"><h5>{{ i.titulo }}</h5></a>
+                            <ul class="post-info">
+                              <li><a>{{ i.publicado }}</a></li>
+                            </ul>
+                          </li>
+                          {% empty %}
+                          <div class="blog-empty">
+                              <h2>No hay posts para mostrar </h2>
+                          </div>                        
+                        {% endfor %}             
                       </ul>
                     </div>
                   </div>
@@ -110,30 +113,13 @@
                     </div>
                     <div class="content">
                       <ul>
-                        <li><a href="#">- Vida Natural</a></li>
-                        <li><a href="#">- Cosas Increíbles</a></li>
-                        <li><a href="#">- Ideas Creativas</a></li>
-                        <li><a href="#">- Fútbol Mundial</a></li>
-                        <li><a href="#">- Internas en Clubs</a></li>
-                        <li><a href="#">- Todo de Europa</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-12">
-                  <div class="sidebar-item tags">
-                    <div class="sidebar-heading">
-                      <h2>Etiquetas</h2>
-                    </div>
-                    <div class="content">
-                      <ul>
-                        <li><a href="#">Estilo de Vida</a></li>
-                        <li><a href="#">Creativo</a></li>
-                        <li><a href="#">Ideas</a></li>
-                        <li><a href="#">Inspiración</a></li>
-                        <li><a href="#">Motivación</a></li>
-                        <li><a href="#">Internas</a></li>
-                        <li><a href="#">Resúmenes</a></li>
+                        {% for categoria in categorias %}
+                          <li>
+                            <a href="{% url 'apps.posts:posts_por_categoria' pk=categoria.pk %}">{{ categoria.nombre }}</a>
+                          </li>
+                          {% empty %}
+                              <li>No hay categorías</li>
+                        {% endfor %}
                       </ul>
                     </div>
                   </div>

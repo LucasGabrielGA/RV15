@@ -5,6 +5,7 @@
 {% load colaborador_tags %}
 
 {% block title %} Inicio {%endblock title%} 
+<var>contador = 0</var>
 
 {% block contenido %}
         <!-- Page Content -->
@@ -73,19 +74,18 @@
               <div class="col-lg-12">                
                 <div class="blog-post">
 
-                  {% for i in posts %}
-                    <div class="blog-thumb">
-                      <img src="{{ posts.imagen.url }}" alt="">
-                    </div>
+                  {% for i in posts|slice:":3" %}
                     <div class="down-content">
                       <span>{{ i.categoria }}</span>
                       <a href="{% url 'apps.posts:post_individual' i.id %}"><h4>{{ i.titulo }}</h4></a>
                       <ul class="post-info">
-                        <li>{{ posts.autor }}</li>
-                        <li><a href="#">{{ posts.publicado }}</li>
-                        <li><a href="#">12 Comentarios</a></li>
+                        <li><a>Publicado por {{ i.autor }}</a></li>
                       </ul>
-                      <p>{{ posts.texto }}</p>                    
+                      <div class="blog-thumb">
+                        <a href="{% url 'apps.posts:post_individual' i.id %}">
+                          <img src="{{ i.imagen.url }}" alt="" height="350px;">
+                        </a>
+                      </div>           
                     </div>
                     {% empty %}                  
                     <div class="blog-empty">
@@ -120,17 +120,19 @@
                   </div>
                   <div class="content">
                     <ul>
-                      
                       {% for i in posts %}
-                        <li><a href="{% url 'apps.posts:post_individual' i.id %}"></a></li>
-                        <h5>{{ i.titulo }}</h5>
-                        <span>MES - DIA - AÑO</span>
+                        <li>
+                          <a href="{% url 'apps.posts:post_individual' i.id %}"><h5>{{ i.titulo }}</h5></a>
+                          <ul class="post-info">
+                            <li><a>{{ i.publicado }}</a></li>
+                          </ul>
+                        </li>
+                        
                         {% empty %}
                         <div class="blog-empty">
                             <h2>No hay posts para mostrar </h2>
                         </div>                        
-                      {% endfor %}
-                                           
+                      {% endfor %}             
                     </ul>
                   </div>
                 </div>
@@ -143,7 +145,9 @@
                   <div class="content">
                     <ul>
                       {% for categoria in categorias %}
-                        <li><a href="{% url 'apps.posts:posts_por_categoria' pk=categoria.pk %}">{{ categoria.nombre }}</a>
+                        <li>
+                          <a href="{% url 'apps.posts:posts_por_categoria' pk=categoria.pk %}">{{ categoria.nombre }}</a>
+                        </li>
                         {% empty %}
                             <li>No hay categorías</li>
                       {% endfor %}
