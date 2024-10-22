@@ -1,4 +1,4 @@
-# RV15 - Grupo 15
+# RV15 - Grupo 15 - Comisión 6
 Este es el repositorio del Blog (proyecto final) con la temática "Realidad Virtual y Aumentada para la Educación", para el curso INFORMATORIO de la provincia del Chaco.
 
 Integrantes:
