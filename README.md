@@ -1,5 +1,5 @@
 # RV15 - Grupo 15
-Es nuevo proyecto final con la temática "Realidad Virtual y Aumentada para la Educación"
+Este es el repositorio del Blog (proyecto final) con la temática "Realidad Virtual y Aumentada para la Educación", para el curso INFORMATORIO de la provincia del Chaco.
 
 Integrantes:
 - Cristal Brisa Elena Quintana
